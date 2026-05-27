@@ -1,0 +1,661 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <title>Voltara | Ecommerce Home</title>
+</head>
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+
+    :root {
+        --primary: #4d8c8c;
+        --primary-light: #85b3b3;
+        --accent: #ff7a59;
+        --text: #1f2a36;
+        --muted: #65757f;
+        --bg: #f4f7f8;
+    }
+
+    body {
+        background: var(--bg);
+        color: var(--text);
+    }
+
+    nav {
+        width: 100%;
+        background: #ffffffcc;
+        backdrop-filter: blur(10px);
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        justify-content: space-between;
+        gap: 16px;
+        padding: 20px 40px;
+        position: sticky;
+        top: 0;
+        z-index: 10;
+        border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+    }
+
+    .logo img {
+        width: 50px;
+        height: 50px;
+        object-fit: contain;
+    }
+
+    .brand {
+        font-size: 28px;
+        font-weight: 700;
+        color: var(--primary);
+        letter-spacing: 0.04em;
+        display: inline-flex;
+        align-items: center;
+        gap: 12px;
+    }
+
+    .menu {
+        display: flex;
+        gap: 28px;
+        list-style: none;
+        align-items: center;
+        flex-wrap: wrap;
+    }
+
+    .menu li a {
+        text-decoration: none;
+        color: var(--text);
+        font-size: 15px;
+        transition: color 0.2s ease;
+    }
+
+    .menu li a:hover {
+        color: var(--primary);
+    }
+
+    .search {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        flex-wrap: nowrap;
+    }
+
+    .search input {
+        flex: 1 1 140px;
+        min-width: 120px;
+        padding: 10px 14px;
+        border: 1px solid #d9e1e5;
+        border-radius: 999px;
+        width: 180px;
+        max-width: 240px;
+        transition: width 0.3s ease;
+    }
+
+    .search input:focus {
+        width: 240px;
+        outline: none;
+        border-color: var(--primary);
+    }
+
+    .search button {
+        flex: 0 0 auto;
+        border: none;
+        padding: 10px 14px;
+        background: var(--primary);
+        border-radius: 999px;
+        color: white;
+        cursor: pointer;
+    }
+
+    main {
+        margin-top: 24px;
+    }
+
+    .hero {
+        display: grid;
+        grid-template-columns: 1.2fr 0.8fr;
+        gap: 40px;
+        align-items: center;
+        padding: 80px 40px 40px;
+    }
+
+    .hero-copy {
+        max-width: 560px;
+    }
+
+    .eyebrow {
+        display: inline-flex;
+        align-items: center;
+        gap: 10px;
+        margin-bottom: 20px;
+        color: var(--primary);
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 0.12em;
+        font-size: 13px;
+    }
+
+    .hero-copy h1 {
+        font-size: clamp(3rem, 4vw, 4.5rem);
+        line-height: 0.95;
+        margin-bottom: 24px;
+    }
+
+    .hero-copy p {
+        color: var(--muted);
+        font-size: 1rem;
+        line-height: 1.75;
+        margin-bottom: 28px;
+    }
+
+    .hero-actions {
+        display: flex;
+        gap: 18px;
+        flex-wrap: wrap;
+    }
+
+    .button-primary,
+    .button-secondary {
+        border: none;
+        border-radius: 999px;
+        padding: 14px 26px;
+        font-size: 0.98rem;
+        cursor: pointer;
+        text-decoration: none;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .button-primary {
+        background: var(--primary);
+        color: white;
+    }
+
+    .button-secondary {
+        background: white;
+        color: var(--text);
+        border: 1px solid #d9e1e5;
+    }
+
+    .hero-cards {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 18px;
+    }
+
+    .card-highlight {
+        background: white;
+        border-radius: 26px;
+        padding: 24px;
+        box-shadow: 0 24px 90px rgba(45, 69, 84, 0.08);
+        display: grid;
+        gap: 18px;
+    }
+
+    .card-highlight h3 {
+        font-size: 1.05rem;
+        margin-bottom: 10px;
+    }
+
+    .card-highlight p {
+        color: var(--muted);
+        line-height: 1.7;
+        font-size: 0.95rem;
+    }
+
+    .card-highlight .price {
+        font-size: 1.75rem;
+        font-weight: 700;
+        color: var(--accent);
+    }
+
+    .hero-image {
+        position: relative;
+      
+        min-height: 520px;
+        background: linear-gradient(180deg, #e6f4f4 0%, #ffffff 100%);
+        border-radius: 36px;
+        overflow: hidden;
+        display: grid;
+        place-items: center;
+    }
+
+    .hero-image::after {
+        content: '';
+        position: absolute;
+        inset: 0;
+        background: radial-gradient(circle at top right, rgba(77, 140, 140, 0.24), transparent 45%);
+    }
+
+    .hero-image img {
+        width: 100%;
+   
+        max-width: 520px;
+        border-radius: 32px;
+        position: relative;
+        z-index: 1;
+        box-shadow: 0 40px 90px rgba(34, 54, 79, 0.14);
+    }
+
+    .section-heading {
+        padding: 0 40px;
+        margin-top: 40px;
+    }
+
+    .section-heading h2 {
+        font-size: clamp(2rem, 3vw, 2.8rem);
+        margin-bottom: 12px;
+    }
+
+    .section-heading p {
+        color: var(--muted);
+        max-width: 720px;
+        line-height: 1.8;
+    }
+
+    .products-grid {
+        padding: 24px 40px 0;
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 24px;
+    }
+
+    .product-card {
+        background: white;
+        border-radius: 28px;
+        overflow: hidden;
+        box-shadow: 0 18px 45px rgba(29, 45, 61, 0.08);
+        display: flex;
+        flex-direction: column;
+    }
+
+    .product-card img {
+        width: 100%;
+        aspect-ratio: 4 / 3;
+        object-fit: cover;
+    }
+
+    .product-info {
+        padding: 22px;
+        display: grid;
+        gap: 14px;
+    }
+
+    .product-info h3 {
+        font-size: 1.1rem;
+    }
+
+    .product-info p {
+        color: var(--muted);
+        font-size: 0.95rem;
+        line-height: 1.6;
+    }
+
+    .product-footer {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 0 22px 22px;
+    }
+
+    .product-price {
+        font-weight: 700;
+        color: var(--accent);
+    }
+
+    .badge {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        background: rgba(255, 122, 89, 0.1);
+        color: var(--accent);
+        border-radius: 999px;
+        padding: 8px 12px;
+        font-size: 0.85rem;
+        width: fit-content;
+    }
+
+    .features {
+        padding: 40px;
+        display: grid;
+        gap: 22px;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+
+    .feature-card {
+        background: white;
+        border-radius: 24px;
+        padding: 26px;
+        box-shadow: 0 14px 36px rgba(45, 69, 84, 0.06);
+        display: grid;
+        gap: 14px;
+    }
+
+    .feature-card h3 {
+        font-size: 1rem;
+    }
+
+    .feature-card p {
+        color: var(--muted);
+        font-size: 0.95rem;
+        line-height: 1.7;
+    }
+
+    .newsletter {
+        background: var(--primary);
+        color: white;
+        border-radius: 32px;
+        margin: 40px 40px 80px;
+        padding: 40px;
+        display: grid;
+        grid-template-columns: 1.2fr 0.8fr;
+        gap: 30px;
+        align-items: center;
+    }
+
+    .newsletter h2 {
+        font-size: clamp(2rem, 2.5vw, 2.6rem);
+        margin-bottom: 18px;
+    }
+
+    .newsletter p {
+        color: #e5f1f1;
+        line-height: 1.8;
+    }
+
+    .newsletter-form {
+        display: flex;
+        gap: 14px;
+        flex-wrap: wrap;
+    }
+
+    .newsletter-form input {
+        flex: 1;
+        min-width: 220px;
+        padding: 16px 18px;
+        border: none;
+        border-radius: 999px;
+    }
+
+    .newsletter-form button {
+        border: none;
+        border-radius: 999px;
+        padding: 16px 26px;
+        background: white;
+        color: var(--primary);
+        font-weight: 700;
+        cursor: pointer;
+    }
+
+    footer {
+        padding: 30px 40px 40px;
+        display: flex;
+        justify-content: space-between;
+        gap: 20px;
+        flex-wrap: wrap;
+        background: #f8fafb;
+        color: var(--muted);
+    }
+
+    footer .footer-col {
+        min-width: 220px;
+        display: grid;
+        gap: 12px;
+    }
+
+    footer a {
+        color: inherit;
+        text-decoration: none;
+    }
+
+    @media (max-width: 1080px) {
+        .hero,
+        .newsletter {
+            grid-template-columns: 1fr;
+        }
+
+        .products-grid,
+        .features {
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+        }
+    }
+
+    @media (max-width: 860px) {
+        .brand {
+            order: 1;
+            width: 100%;
+            justify-content: center;
+            display: flex;
+            text-align: center;
+        }
+
+        .menu {
+            order: 2;
+            width: 100%;
+            justify-content: center;
+            gap: 16px;
+        }
+
+        .search {
+            order: 3;
+            width: 100%;
+            justify-content: flex-start;
+        }
+
+        .search input {
+            width: 100%;
+            max-width: 320px;
+        }
+    }
+
+    @media (max-width: 560px) {
+        nav {
+            padding: 18px 20px;
+        }
+
+        .menu {
+            justify-content: center;
+        }
+
+        .search {
+            justify-content: center;
+        }
+
+        .search button {
+            width: 100%;
+            max-width: 90px;
+        }
+    }
+
+    @media (max-width: 780px) {
+        nav {
+            flex-wrap: wrap;
+            gap: 16px;
+            padding: 18px 20px;
+        }
+
+        .menu {
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 18px;
+        }
+
+        .hero,
+        .newsletter {
+            padding: 24px 20px 0;
+        }
+
+        .section-heading,
+        .products-grid,
+        .features {
+            padding: 0 20px;
+        }
+
+        .products-grid,
+        .features {
+            grid-template-columns: 1fr;
+        }
+
+        .search input {
+            width: 140px;
+        }
+    }
+    .frontpic {
+        position: relative;
+        top: -40px;
+        margin: 0%;
+        height: 60vh;
+        width: 100%;
+        
+        border-radius: 32px;
+        box-shadow: 0 40px 90px rgba(34, 54, 79, 0.14);
+    }
+    
+</style>
+<body>
+    <nav>
+        <div class="brand">
+            <img src="./logo.png" height="30px" width="35px" alt="Voltara logo">
+            Voltara
+        </div>
+        <ul class="menu">
+            <li><a href="./index.html">Home</a></li>
+            <li><a href="./products.html">Products</a></li>
+            <li><a href="./about.html">About</a></li>
+            <li><a href="./contact.html">Contact</a></li>
+        </ul>
+        <div class="search">
+            <input type="text" placeholder="Search products...">
+            <button aria-label="Search">
+                <i class="fa fa-search"></i>
+            </button>
+        </div>
+    </nav>
+
+    <main>
+        <section class="hero">
+            <div class="hero-copy">
+                <img class="frontpic" src="./electrical-component ..jpg" alt="Electrical component image">
+                <div class="eyebrow"><i class="fa fa-bolt"></i> Fast delivery</div>
+                <h1>Everything your store needs for a stronger launch.</h1>
+                <p>Discover curated collections, featured offers, and bestselling products designed to help your business grow fast. Shop with confidence and enjoy premium service on every order.</p>
+                <div class="hero-actions">
+                    <a class="button-primary" href="products.html">Shop Now</a>
+                    <a class="button-secondary" href="about.html">Learn More</a>
+                </div>
+            </div>
+
+            <div class="hero-cards">
+                <div class="card-highlight">
+                    <h3>Featured product</h3>
+                    <p>Smart home floorlights with premium brightness, voice control, and a sleek modern design for every room.</p>
+                    <div class="price">Rs 12,999</div>
+                    <span class="badge"><i class="fa fa-star"></i> Best Seller</span>
+                </div>
+                <div class="card-highlight">
+                    <h3>Season deal</h3>
+                    <p>Save up to 20% on new arrivals and limited-time bundles — curated for style, performance, and value.</p>
+                    <div class="price">Up to 20% off</div>
+                    <span class="badge"><i class="fa fa-clock-o"></i> Limited Offer</span>
+                </div>
+                <div class="hero-image">
+                    <img src="./ArboriaColumnUnique.jpg" alt="Hero product showcase">
+                </div>
+            </div>
+        </section>
+
+        <section class="section-heading">
+            <h2>Top picks for your store</h2>
+            <p>Browse our most popular selections and choose products built to impress your customers. These items are trending now and ready to ship.</p>
+        </section>
+
+        <section class="products-grid">
+            <article class="product-card">
+                <img src="./NXB-80-MCB-4P.jpg" alt="circuit breaker MCBs">
+                <div class="product-info">
+                    <h3>Circuit Breaker MCBs</h3>
+                    <p>Reliable surge protection with dual-pole safety and real-time status indicators for zero-risk power management.</p>
+                </div>
+                <div class="product-footer">
+                    <span class="product-price">Rs 1,299</span>
+                    <span class="badge"><i class="fa fa-check"></i> In stock</span>
+                </div>
+            </article>
+            <article class="product-card">
+                <img src="./panel light.png" alt="Modern panel light">
+                <div class="product-info">
+                    <h3>Modern Panel Light</h3>
+                    <p>Sleek and functional lighting solution for any room, featuring energy-efficient LED technology and a modern design.</p>
+                </div>
+                <div class="product-footer">
+                    <span class="product-price">Rs 2,499</span>
+                    <span class="badge"><i class="fa fa-star"></i> Popular</span>
+                </div>
+            </article>
+            <article class="product-card">
+                <img src="./distribution-board.png"    alt="Distribution Board">
+                <div class="product-info">
+                    <h3>Distribution Board</h3>
+                    <p>Multi-tier safety layout with pre-wired grounding terminals and compact spacing for zero-clutter electrical panels.</p>
+                </div>
+                <div class="product-footer">
+                    <span class="product-price">Rs 7,999</span>
+                    <span class="badge"><i class="fa fa-truck"></i> Free shipping</span>
+                </div>
+            </article>
+        </section>
+
+        <section class="features">
+            <div class="feature-card">
+                <h3>Fast shipping</h3>
+                <p>Get products delivered quickly with reliable tracking and flexible shipping options at checkout.</p>
+            </div>
+            <div class="feature-card">
+                <h3>Secure checkout</h3>
+                <p>Payments are protected with industry-standard encryption and multiple payment methods for every buyer.</p>
+            </div>
+            <div class="feature-card">
+                <h3>Quality service</h3>
+                <p>Enjoy dedicated support from our team and hassle-free returns for a better shopping experience.</p>
+            </div>
+        </section>
+
+        <section class="newsletter">
+            <div>
+                <h2>Join our community</h2>
+                <p>Sign up to get new arrivals, exclusive discounts, and early access to seasonal collections right in your inbox.</p>
+            </div>
+            <form class="newsletter-form">
+                <input type="email" placeholder="Enter your email" aria-label="Email address">
+                <button type="submit">Subscribe</button>
+            </form>
+        </section>
+    </main>
+
+    <footer>
+        <div class="footer-col">
+            <strong>Voltara</strong>
+            <p>Modern ecommerce made simple. Sell better and delight customers with every purchase.</p>
+        </div>
+        <div class="footer-col">
+            <strong>Explore</strong>
+            <a href="products.html">Products</a>
+            <a href="about.html">About us</a>
+            <a href="contact.html">Contact</a>
+        </div>
+        <div class="footer-col">
+            <strong>Support</strong>
+            <a href="#">Shipping</a>
+            <a href="#">Returns</a>
+            <a href="#">FAQs</a>
+        </div>
+    </footer>
+</body>
+</html>

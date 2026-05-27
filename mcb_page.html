@@ -1,0 +1,700 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <title>Voltara | Ecommerce Home</title>
+</head>
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+
+    :root {
+        --primary: #4d8c8c;
+        --primary-light: #85b3b3;
+        --accent: #ff7a59;
+        --text: #1f2a36;
+        --muted: #65757f;
+        --bg: #f4f7f8;
+    }
+
+    body {
+        background: var(--bg);
+        color: var(--text);
+        min-height: 100vh;
+    }
+     nav {
+        width: 100%;
+        background: #ffffffcc;
+        backdrop-filter: blur(10px);
+        display: grid;
+        grid-template-columns: auto 1fr auto;
+        align-items: center;
+        gap: 24px;
+        padding: 20px 40px;
+        position: sticky;
+        top: 0;
+        z-index: 10;
+        border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+    }
+
+    .logo img {
+        width: 50px;
+        height: 50px;
+        object-fit: contain;
+    }
+
+    .brand {
+        justify-self: center;
+        font-size: 28px;
+        font-weight: 700;
+        color: var(--primary);
+        letter-spacing: 0.04em;
+        display: inline-flex;
+        align-items: center;
+        gap: 12px;
+        white-space: nowrap;
+    }
+
+    .menu {
+        justify-self: center;
+        display: flex;
+        gap: 28px;
+        list-style: none;
+        align-items: center;
+    }
+
+    .search {
+        justify-self: end;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+    }
+
+    .menu li a {
+        text-decoration: none;
+        color: var(--text);
+        font-size: 15px;
+        transition: color 0.2s ease, text-decoration-color 0.2s ease;
+        text-decoration-color: transparent;
+        text-decoration-thickness: 2px;
+    }
+
+    .menu li a:hover {
+        color: var(--primary);
+        text-decoration: none;
+        text-decoration-color: var(--primary);
+    }
+    
+
+    .search {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+    }
+
+    .search input {
+        padding: 10px 14px;
+        border: 1px solid #d9e1e5;
+        border-radius: 999px;
+        width: 180px;
+        transition: width 0.3s ease;
+    }
+
+    .search input:focus {
+        width: 240px;
+        outline: none;
+        border-color: var(--primary);
+    }
+
+    .search button {
+        border: none;
+        padding: 10px 14px;
+        background: var(--primary);
+        border-radius: 999px;
+        color: white;
+        cursor: pointer;
+    }
+
+ 
+
+    .page-container {
+        max-width: 1220px;
+        margin: 0 auto;
+        padding: 32px 24px 64px;
+    }
+
+    .product-hero {
+        display: grid;
+        grid-template-columns: 1.1fr 0.9fr;
+        gap: 40px;
+        align-items: start;
+        margin-bottom: 40px;
+    }
+
+    .hero-media {
+        position: relative;
+    }
+
+    .slider {
+        position: relative;
+        width: 100%;
+        height: 60vh;
+        min-height: 420px;
+        border-radius: 24px;
+        overflow: hidden;
+        background: #fff;
+        box-shadow: 0 24px 80px rgba(31, 42, 54, 0.08);
+    }
+
+    .slider .slides {
+       width: 100%;
+       height: 100%;
+       display: flex;
+       justify-content: center;
+       align-items: center;
+       background: #f9fbfb;
+    }
+
+    .slider img {
+        width: auto;
+        max-width: 100%;
+        height: 100%;
+        display: none;
+        object-fit: contain;
+    }
+
+    .slider img.displaySlide {
+        display: block;
+        animation: fade 0.9s ease;
+    }
+
+    .slider button {
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        font-size: 1.8rem;
+        background: rgba(0, 0, 0, 0.48);
+        color: white;
+        padding: 14px 16px;
+        border-radius: 999px;
+        border: none;
+        cursor: pointer;
+        transition: background 0.25s ease;
+    }
+
+    .slider button:hover {
+        background: rgba(0, 0, 0, 0.7);
+    }
+
+    .slider .prev {
+        left: 16px;
+    }
+
+    .slider .next {
+        right: 16px;
+    }
+
+    @keyframes fade {
+        from { opacity: 0.4; transform: scale(0.98); }
+        to { opacity: 1; transform: scale(1); }
+    }
+
+    .product-info {
+        display: flex;
+        flex-direction: column;
+        gap: 18px;
+    }
+
+    .eyebrow {
+        text-transform: uppercase;
+        color: var(--primary);
+        letter-spacing: 0.18em;
+        font-size: 0.85rem;
+        font-weight: 700;
+    }
+
+    .product-info h1 {
+        font-size: clamp(2.3rem, 2.5vw, 3rem);
+        line-height: 1.05;
+        max-width: 680px;
+    }
+
+    .price-row {
+        display: flex;
+        align-items: center;
+        gap: 18px;
+        flex-wrap: wrap;
+    }
+
+    .price {
+        font-size: 2.25rem;
+        font-weight: 800;
+        color: var(--text);
+    }
+
+    .price-light {
+        color: var(--muted);
+        font-size: 0.95rem;
+    }
+
+    .rating-row {
+        display: flex;
+        align-items: center;
+        gap: 14px;
+    }
+
+    .rating-badges {
+        display: flex;
+        gap: 6px;
+    }
+
+    .rating-badges span {
+        color: #f5b301;
+        font-size: 1.1rem;
+    }
+
+    .rating-count {
+        color: var(--muted);
+        font-size: 0.95rem;
+    }
+
+    .product-copy {
+        color: var(--muted);
+        line-height: 1.8;
+        max-width: 620px;
+    }
+
+    .product-tags {
+        display: flex;
+        gap: 12px;
+        flex-wrap: wrap;
+        color: var(--text);
+        font-size: 0.95rem;
+    }
+
+    .product-tags span {
+        background: #eef7f7;
+        color: var(--primary);
+        padding: 10px 14px;
+        border-radius: 999px;
+        font-weight: 600;
+    }
+
+    .product-actions {
+        display: flex;
+        gap: 16px;
+        flex-wrap: wrap;
+        margin-top: 8px;
+    }
+
+    .button-primary,
+    .button-secondary {
+        border: none;
+        border-radius: 14px;
+        padding: 16px 24px;
+        font-size: 1rem;
+        font-weight: 700;
+        cursor: pointer;
+        transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .button-primary {
+        background: var(--primary);
+        color: white;
+        box-shadow: 0 16px 32px rgba(77, 140, 140, 0.22);
+    }
+
+    .button-secondary {
+        background: white;
+        color: var(--text);
+        border: 1px solid #e2e8ea;
+    }
+
+    .button-primary:hover,
+    .button-secondary:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 20px 36px rgba(31, 42, 54, 0.12);
+    }
+
+    .details-grid {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 24px;
+        margin-top: 42px;
+    }
+
+    .detail-card {
+        background: white;
+        border-radius: 24px;
+        padding: 28px;
+        box-shadow: 0 18px 50px rgba(31, 42, 54, 0.06);
+    }
+
+    .detail-card h2 {
+        font-size: 1.2rem;
+        margin-bottom: 18px;
+    }
+
+    .detail-card ul {
+        list-style: disc;
+        margin-left: 18px;
+        color: var(--muted);
+        line-height: 1.9;
+    }
+
+    .detail-card p {
+        color: var(--muted);
+        line-height: 1.8;
+    }
+
+    .related-products {
+        margin-top: 56px;
+    }
+
+    .section-heading {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        margin-bottom: 24px;
+    }
+
+    .section-heading h2 {
+        font-size: 1.5rem;
+    }
+
+    .related-grid {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 20px;
+    }
+
+    .related-card {
+        background: white;
+        border-radius: 20px;
+        overflow: hidden;
+        box-shadow: 0 18px 50px rgba(31, 42, 54, 0.06);
+    }
+
+    .related-card img {
+        width: 100%;
+        height: 200px;
+        object-fit: cover;
+    }
+
+    .related-card-content {
+        padding: 18px 16px 22px;
+    }
+
+    .related-card-content h3 {
+        font-size: 1rem;
+        margin-bottom: 10px;
+    }
+
+    .related-card-content p {
+        color: var(--muted);
+        font-size: 0.95rem;
+        margin-bottom: 16px;
+    }
+
+    .related-card-content .card-price {
+        font-weight: 700;
+        color: var(--text);
+    }
+
+    .footer {
+        margin-top: 64px;
+        padding: 28px 0;
+        text-align: center;
+        color: var(--muted);
+        font-size: 0.95rem;
+    }
+
+    @media (max-width: 1040px) {
+        .product-hero {
+            grid-template-columns: 1fr;
+        }
+
+        .details-grid {
+            grid-template-columns: 1fr;
+        }
+
+        .related-grid {
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+        }
+    }
+
+    @media (max-width: 980px) {
+        .search input {
+            width: 140px;
+        }
+
+        .search input:focus {
+            width: 180px;
+        }
+    }
+
+    @media (max-width: 860px) {
+        nav {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 16px 20px;
+            gap: 16px;
+        }
+
+        .brand {
+            position: static;
+            transform: none;
+            justify-self: center;
+            margin: 0 auto;
+        }
+
+        .menu {
+            order: 2;
+            width: 100%;
+            justify-content: center;
+            gap: 14px;
+            flex-wrap: wrap;
+        }
+
+        .search {
+            order: 3;
+            width: 100%;
+            justify-content: center;
+        }
+
+        .search input {
+            width: calc(100% - 58px);
+            max-width: 100%;
+        }
+
+        .search button {
+            width: 48px;
+            min-width: 48px;
+            padding: 10px;
+        }
+    }
+
+    @media (max-width: 720px) {
+        nav {
+            padding: 18px 20px;
+            justify-content: center;
+            gap: 12px;
+        }
+
+        .menu {
+            order: 2;
+            width: 100%;
+            justify-content: center;
+        }
+
+        .search {
+            width: 100%;
+            justify-content: center;
+        }
+
+        .product-hero {
+            gap: 28px;
+        }
+
+        .slider {
+            height: 46vh;
+            min-height: 320px;
+        }
+
+        .related-grid {
+            grid-template-columns: 1fr;
+        }
+    }
+</style>
+<body>
+    <nav>
+        <div class="brand">
+            <img src="./logo.png" height="30px" width="35px" alt="Voltara logo" alt="Voltara logo">
+            Voltara
+        </div>
+        <ul class="menu">
+            <li><a href="./index.html">Home</a></li>
+            <li><a href="./products.html">Products</a></li>
+            <li><a href="./about.html">About</a></li>
+            <li><a href="./contact.html">Contact</a></li>
+        </ul>
+        <div class="search">
+            <input type="text" placeholder="Search products...">
+            <button type="button" aria-label="Search"><i class="fa fa-search"></i></button>
+        </div>
+    </nav>
+
+    <main class="page-container">
+        <section class="product-hero">
+            <div class="hero-media">
+                <div class="slider">
+                    <div class="slides">
+                        <img class="slide" src="./mcb 1.png" alt="MCB product image 1">
+                        <img class="slide" src="./mcb2.png" alt="MCB product image 2">
+                        <img class="slide" src="./mcb3.png" alt="MCB product image 3">
+                    </div>
+                    <button type="button" class="prev" onclick="prevSlide()">&#10094;</button>
+                    <button type="button" class="next" onclick="nextSlide()">&#10095;</button>
+                </div>
+            </div>
+
+            <div class="product-info">
+                <span class="eyebrow">Voltara Assured</span>
+                <h1>Havells Armour MCB C Series 32A Double Pole MCB</h1>
+                <div class="price-row">
+                    <span class="price">₹499</span>
+                    <span class="price-light">Free delivery & 7-day return</span>
+                </div>
+                <div class="rating-row">
+                    <div class="rating-badges">
+                        <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
+                    </div>
+                    <span class="rating-count">4.9 (320 reviews)</span>
+                </div>
+                <p class="product-copy">Designed for reliable overload and surge protection, this Havells 32A double pole MCB delivers dependable performance for homes and small commercial loads. Durable polycarbonate housing and C-curve tripping ensure safe switching and long-term protection.</p>
+                <div class="product-tags">
+                    <span>Cash on Delivery</span>
+                    <span>7-day returns</span>
+                    <span>10kA breaking capacity</span>
+                </div>
+                <div class="product-actions">
+                    <button type="button" class="button-primary">Add to Cart</button>
+                    <button type="button" class="button-secondary">Buy Now</button>
+                </div>
+                
+         <div id="successModal" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.7); z-index: 9999; justify-content: center; align-items: center;">
+        <div style="background: white; padding: 35px; border-radius: 15px; text-align: center; max-width: 320px; box-shadow: 0 10px 30px rgba(0,0,0,0.3);">
+        <h2 style="color: #28a745; margin-bottom: 10px;">✅ Order Successful!</h2>
+        <p>Thank you for purchasing <strong>Havells Armour MCB</strong></p>
+        <p style="margin: 15px 0; color: #333;">Total: <strong>₹499</strong></p>
+        <button id="closeModalBtn" style="padding: 12px 30px; background: #28a745; color: white; border: none; border-radius: 8px; font-size: 16px; cursor: pointer;">Close</button>
+        </div>
+        </div>
+                <div class="detail-card">
+                    <h2>Why choose this MCB?</h2>
+                    <p>Perfect for modern electrical installations, this MCB offers rapid response to overloads and short circuits while maintaining a compact and easy-to-install design.</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="details-grid">
+            <div class="detail-card">
+                <h2>Key Specifications</h2>
+                <ul>
+                    <li>Brand: Havells</li>
+                    <li>Model: Armour MCB C Series</li>
+                    <li>Current rating: 32A</li>
+                    <li>Pole configuration: Double pole</li>
+                    <li>Protection: Overload & surge</li>
+                    <li>Breaking capacity: 10kA</li>
+                    <li>Housing: Polycarbonate</li>
+                    <li>Tripping curve: C-curve</li>
+                </ul>
+            </div>
+            <div class="detail-card">
+                <h2>Product Highlights</h2>
+                <ul>
+                    <li>High durability for long-term residential use</li>
+                    <li>Stable operation under frequent switching</li>
+                    <li>Low maintenance with robust construction</li>
+                    <li>Ideal for distribution boards and panel applications</li>
+                    <li>Trusted brand backed by Voltara support</li>
+                </ul>
+            </div>
+        </section>
+
+        <section class="related-products">
+            <div class="section-heading">
+                <h2>Customers also viewed</h2>
+            </div>
+            <div class="related-grid">
+                <article class="related-card">
+                    <img src="./electrical switches.png" alt="MCB pack">
+                    <div class="related-card-content">
+                        <h3>Schneider 20A Single Pole MCB</h3>
+                        <p>Compact MCB with precise tripping for small circuits.</p>
+                        <div class="card-price">₹349</div>
+                    </div>
+                </article>
+                <article class="related-card">
+                    <img src="./panel light.png" alt="Panel board">
+                    <div class="related-card-content">
+                        <h3>Mini Distribution Board</h3>
+                        <p>High-quality panel board with modular spaces.</p>
+                        <div class="card-price">₹1,299</div>
+                    </div>
+                </article>
+                <article class="related-card">
+                    <img src="./electrical wires.png" alt="Electrical wires">
+                    <div class="related-card-content">
+                        <h3>Industrial Grade Cable</h3>
+                        <p>Durable wire for safe power delivery and wiring.</p>
+                        <div class="card-price">₹899</div>
+                    </div>
+                </article>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">&copy; 2026 Voltara. Reliable electrical solutions for home and business.</footer>
+
+    <script>
+        const slides = document.querySelectorAll('.slides img');
+        let slideIndex = 0;
+        let intervalId = null;
+
+        document.addEventListener('DOMContentLoaded', initializeSlider);
+
+        function initializeSlider() {
+            if (slides.length > 0) {
+                slides[slideIndex].classList.add('displaySlide');
+                intervalId = setInterval(nextSlide, 5000);
+            }
+        }
+
+        function showSlide(index) {
+            if (index >= slides.length) {
+                slideIndex = 0;
+            } else if (index < 0) {
+                slideIndex = slides.length - 1;
+            } else {
+                slideIndex = index;
+            }
+
+            slides.forEach((slide) => slide.classList.remove('displaySlide'));
+            slides[slideIndex].classList.add('displaySlide');
+        }
+
+        function prevSlide() {
+            clearInterval(intervalId);
+            showSlide(slideIndex - 1);
+        }
+
+        function nextSlide() {
+            showSlide(slideIndex + 1);
+        }
+
+        
+
+document.querySelector('.button-secondary').addEventListener('click', function() {
+    document.getElementById('successModal').style.display = 'flex';
+});
+
+
+document.getElementById('closeModalBtn').addEventListener('click', function() {
+    document.getElementById('successModal').style.display = 'none';
+});
+    </script>
+</body>
+</html>
+       
+
+

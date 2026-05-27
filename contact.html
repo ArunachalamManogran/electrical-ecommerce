@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <title>Voltara | Ecommerce Home</title>
+</head>
+<style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+
+    :root {
+        --primary: #4d8c8c;
+        --primary-light: #85b3b3;
+        --accent: #ff7a59;
+        --text: #1f2a36;
+        --muted: #65757f;
+        --bg: #f4f7f8;
+    }
+
+    body {
+        background: var(--bg);
+        color: var(--text);
+    }
+
+    nav {
+        width: 100%;
+        background: #ffffffcc;
+        backdrop-filter: blur(10px);
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 20px 40px;
+        position: sticky;
+        top: 0;
+        z-index: 10;
+        border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+    }
+
+    .logo img {
+        width: 50px;
+        height: 50px;
+        object-fit: contain;
+    }
+
+    .brand {
+        font-size: 28px;
+        font-weight: 700;
+        color: var(--primary);
+        letter-spacing: 0.04em;
+        display: inline-flex;
+        align-items: center;
+        gap: 12px;
+    }
+     .menu {
+        display: flex;
+        gap: 28px;
+        list-style: none;
+        align-items: center;
+    }
+
+    .menu li a {
+        text-decoration: none;
+        color: var(--text);
+        font-size: 15px;
+        transition: color 0.2s ease;
+    }
+
+    .menu li a:hover {
+        color: var(--primary);
+    }
+
+    .search {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+    }
+
+    .search input {
+        padding: 10px 14px;
+        border: 1px solid #d9e1e5;
+        border-radius: 999px;
+        width: 180px;
+        transition: width 0.3s ease;
+    }
+
+    .search input:focus {
+        width: 240px;
+        outline: none;
+        border-color: var(--primary);
+    }
+
+    .search button {
+        border: none;
+        padding: 10px 14px;
+        background: var(--primary);
+        border-radius: 999px;
+        color: white;
+        cursor: pointer;
+    }
+
+    main {
+        margin-top: 24px;
+    }
+
+    .contact-hero {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 40px;
+        align-items: stretch;
+        justify-content: flex-start;
+        padding: 40px 20px;
+    }
+    .contact-hero .contact-section {
+        flex: 1 1 400px;
+        display: flex;
+        justify-content: flex-start;
+    }
+    .contact-hero .contact-section img {
+        width: 100%;
+        max-width: 450px;
+        height: auto;
+        object-fit: contain;
+        border-radius: 24px;
+        background-color: var(--primary-light);
+        padding: 24px;
+        margin-right: 40px;
+    }
+
+        section.content {
+        flex: 4;
+        max-width: 720px;
+        margin: 0 auto;
+        padding: 20px 0;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        height: 600%;
+    }
+
+    section.content h1 {
+        font-size: 2.5rem;
+        margin-top: 10px;
+        color: var(--primary);
+    }
+
+    section.content p {
+        line-height: 1.75;
+        margin-bottom: 18px;
+        color: var(--muted);
+    }
+
+    h2 {
+        color: var(--primary);
+        margin-top: 20px;
+    }
+
+    .contact-form {
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+        margin-top: 20px;
+    }
+
+    .contact-form input,
+    .contact-form textarea {
+        width: 100%;
+        padding: 12px 14px;
+        border: 1px solid #d9e1e5;
+        border-radius: 12px;
+        font-size: 1rem;
+        color: var(--text);
+        background: white;
+    }
+
+    .contact-form button {
+        width: fit-content;
+        padding: 12px 24px;
+        border: none;
+        border-radius: 999px;
+        background: var(--primary);
+        color: white;
+        cursor: pointer;
+        font-size: 1rem;
+        margin-top: 10px;
+    }
+
+    @media (max-width: 768px) {
+        nav {
+            flex-direction: column;
+            align-items: center;
+            gap: 12px;
+            padding: 14px 16px;
+        }
+
+        .brand {
+            font-size: 22px;
+            text-align: center;
+        }
+
+        .menu {
+            width: 100%;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 12px;
+            align-items: center;
+        }
+
+        .menu li {
+            width: auto;
+        }
+
+        .menu li a {
+            display: inline-block;
+            padding: 8px 12px;
+            font-size: 14px;
+        }
+
+        .search {
+            width: 100%;
+            justify-content: center;
+        }
+
+        .search input {
+            width: 100%;
+            font-size: 14px;
+        }
+
+        .contact-hero {
+            flex-direction: column-reverse;
+            align-items: center;
+            padding: 20px 16px;
+        }
+
+        .contact-hero .contact-section {
+            width: 100%;
+            justify-content: center;
+        }
+
+        .contact-hero .contact-section img {
+            margin-right: 0;
+            max-width: 100%;
+            padding: 20px;
+        }
+
+        section.content {
+            width: 100%;
+            max-width: 100%;
+            padding: 20px 0 0;
+        }
+
+        .contact-form button {
+            width: 100%;
+        }
+    }
+
+    </style>
+<body>
+     <nav>
+        <div class="brand">
+            <img src="./logo.png" height="30px" width="35px" alt="Voltara logo">
+            Voltara
+        </div>
+        <ul class="menu">
+            <li><a href="./index.html">Home</a></li>
+            <li><a href="./products.html">Products</a></li>
+            <li><a href="./about.html">About</a></li>
+            <li><a href="./contact.html">Contact</a></li>
+        </ul>
+        <div class="search">
+            <input type="text" placeholder="Search products...">
+            <button aria-label="Search">
+                <i class="fa fa-search"></i>
+            </button>
+        </div>
+    </nav>
+        <main class="contact-hero">
+        <div class="contact-section">
+            <img src="./electrician2.png" alt="Voltara logo">
+        </div>
+
+        <section class="content">
+            <h1>contact us</h1>
+            <h2><i class="fa fa-map-marker"></i> Address</h2>
+            <p>123 Main Street, City, State 12345</p>
+            <h2><i class="fa fa-phone"></i> Phone</h2>
+            <p>(123) 456-7890</p>
+            <h2><i class="fa fa-envelope"></i> Email</h2>
+            <p>info@voltara.com</p>
+             <form class="contact-form">
+                <h2><i class="fa fa-comment"></i> Customer Query</h2>
+                <input type="text" id="name" placeholder="Your name" required>
+                <input type="email" id="email" placeholder="Your email" required>
+                <textarea id="message" rows="5" placeholder="Write your message" required></textarea>
+                <button type="submit">Submit</button>
+            </form>
+        </section>
+         
+    </main>
+    <script>
+        const contactForm = document.querySelector('.contact-form');
+        contactForm.addEventListener('submit', function(event) {
+            event.preventDefault();
+            alert('Query submitted!');
+            contactForm.reset();
+        });
+    </script>
+</body>
+</html>

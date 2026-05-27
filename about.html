@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <title>Voltara | Ecommerce Home</title>
+</head>
+<style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+
+    :root {
+        --primary: #4d8c8c;
+        --primary-light: #85b3b3;
+        --accent: #ff7a59;
+        --text: #1f2a36;
+        --muted: #65757f;
+        --bg: #f4f7f8;
+    }
+
+    body {
+        background: var(--bg);
+        color: var(--text);
+    }
+
+    nav {
+        width: 100%;
+        background: #ffffffcc;
+        backdrop-filter: blur(10px);
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 20px 40px;
+        position: sticky;
+        top: 0;
+        z-index: 10;
+        border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+    }
+
+    .logo img {
+        width: 50px;
+        height: 50px;
+        object-fit: contain;
+    }
+
+    .brand {
+        font-size: 28px;
+        font-weight: 700;
+        color: var(--primary);
+        letter-spacing: 0.04em;
+        display: inline-flex;
+        align-items: center;
+        gap: 12px;
+    }
+
+    .menu {
+        display: flex;
+        gap: 28px;
+        list-style: none;
+        align-items: center;
+    }
+
+    .menu li a {
+        text-decoration: none;
+        color: var(--text);
+        font-size: 15px;
+        transition: color 0.2s ease;
+    }
+
+    .menu li a:hover {
+        color: var(--primary);
+    }
+
+    .search {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+    }
+
+    .search input {
+        padding: 10px 14px;
+        border: 1px solid #d9e1e5;
+        border-radius: 999px;
+        width: 180px;
+        transition: width 0.3s ease;
+    }
+
+    .search input:focus {
+        width: 240px;
+        outline: none;
+        border-color: var(--primary);
+    }
+
+    .search button {
+        border: none;
+        padding: 10px 14px;
+        background: var(--primary);
+        border-radius: 999px;
+        color: white;
+        cursor: pointer;
+    }
+
+    main {
+        margin-top: 24px;
+    }
+
+    .about-hero {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 40px;
+        max-width: 1200px;
+        margin: 40px auto;
+        padding: 0 20px;
+        text-align: left;
+    }
+
+    .about-hero .logo-section {
+        flex: 0 0 320px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .about-hero .logo-section img {
+        width: 100%;
+        max-width: 320px;
+        height: auto;
+        object-fit: contain;
+        border-radius: 24px;
+        box-shadow: 0 16px 40px rgba(0, 0, 0, 0.08);
+        background: white;
+        padding: 24px;
+    }
+
+    section.content {
+        flex: 1;
+        max-width: 720px;
+        margin: 0 auto;
+        padding: 20px 0;
+    }
+
+    section.content h1 {
+        font-size: 2.5rem;
+        margin-bottom: 24px;
+        color: var(--primary);
+    }
+
+    section.content p {
+        line-height: 1.75;
+        margin-bottom: 18px;
+        color: var(--muted);
+    }
+
+    @media (max-width: 960px) {
+        nav {
+            flex-wrap: wrap;
+            justify-content: center;
+            padding: 16px 20px;
+            gap: 16px;
+        }
+
+        .menu {
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 16px;
+        }
+
+        .search {
+            width: 100%;
+            justify-content: center;
+        }
+
+        .search input {
+            width: min(100%, 320px);
+        }
+    }
+
+    @media (max-width: 860px) {
+        nav {
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+        }
+
+        .menu {
+            width: 100%;
+            justify-content: center;
+        }
+
+        .search {
+            width: 100%;
+            justify-content: center;
+        }
+
+        .about-hero {
+            flex-direction: column;
+            text-align: center;
+        }
+
+        .about-hero .logo-section {
+            width: 100%;
+        }
+
+        section.content {
+            width: 100%;
+            padding: 0;
+        }
+    }
+
+</style>
+<body>
+    <nav>
+        <div class="brand">
+            <img src="./logo.png" height="30px" width="35px" alt="Voltara logo">
+            Voltara
+        </div>
+        <ul class="menu">
+            <li><a href="./index.html">Home</a></li>
+            <li><a href="./products.html">Products</a></li>
+            <li><a href="./about.html">About</a></li>
+            <li><a href="./contact.html">Contact</a></li>
+        </ul>
+        <div class="search">
+            <input type="text" placeholder="Search products...">
+            <button aria-label="Search">
+                <i class="fa fa-search"></i>
+            </button>
+        </div>
+    </nav>
+     <main class="about-hero">
+        <div class="logo-section">
+            <img src="./logo.png" alt="Voltara logo">
+        </div>
+
+        <section class="content">
+            <h1>About Voltara</h1>
+            <p>Voltara is a leading ecommerce platform dedicated to providing customers with a seamless online shopping experience. We offer a wide range of products, from electronics and fashion to home goods and more. Our mission is to connect customers with the best products at competitive prices while ensuring exceptional customer service.</p>
+            <p>Founded in 2020, Voltara has quickly grown to become a trusted name in the ecommerce industry. We pride ourselves on our user-friendly website, secure payment options, and fast shipping. Our team is committed to continuously improving our platform and expanding our product offerings to meet the evolving needs of our customers.</p>
+            <p>At Voltara, we believe in creating a positive impact on the communities we serve. We are dedicated to sustainability and ethical business practices, working with suppliers who share our values. Join us on our journey as we strive to make online shopping better for everyone.</p>
+        </section>
+        
+    </main>
+</body>
+</html>
